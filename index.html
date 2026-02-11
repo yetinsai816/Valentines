@@ -55,6 +55,9 @@ h1 {
 
 #buttons {
     margin-top: 30px;
+    position: relative;
+    width: 300px;
+    height: 80px;
 }
 
 button {
@@ -63,19 +66,22 @@ button {
     border-radius: 40px;
     border: none;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.2s ease;
 }
 
 #yesBtn {
     background: #ff4d6d;
     color: white;
-    margin-right: 20px;
+    position: absolute;
+    left: 0;
 }
 
 #noBtn {
     background: #555;
     color: white;
     position: absolute;
+    left: 160px;   /* starting position */
+    top: 0px;
 }
 
 /* Confetti */
@@ -127,11 +133,11 @@ setInterval(() => {
     setTimeout(() => heart.remove(), 6000);
 }, 500);
 
-/* Keep NO button inside viewport */
+/* BIG dramatic movement */
 function moveNo() {
 
-    const maxX = window.innerWidth - noBtn.offsetWidth - 20;
-    const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
 
     const x = Math.random() * maxX;
     const y = Math.random() * maxY;
@@ -140,7 +146,7 @@ function moveNo() {
     noBtn.style.top = y + "px";
 }
 
-noBtn.addEventListener("mouseover", () => {
+noBtn.addEventListener("mouseenter", () => {
     if (noClicks < 5) {
         moveNo();
         puppy.innerHTML = "🐶😏";
@@ -154,7 +160,7 @@ noBtn.addEventListener("click", () => {
     puppy.innerHTML = "🐶😡";
     message.innerHTML = "Heyyy that's not nice!";
 
-    yesBtn.style.transform = `scale(${1 + noClicks * 0.2})`;
+    yesBtn.style.transform = `scale(${1 + noClicks * 0.3})`;
 
     if (noClicks === 5) {
         puppy.innerHTML = "🐶😤";
