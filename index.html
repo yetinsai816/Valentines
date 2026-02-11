@@ -151,14 +151,15 @@ noBtn.addEventListener("mouseover", () => {
 
 noBtn.addEventListener("click", () => {
     noClicks++;
+
     puppy.innerHTML = "🐶😡";
     message.innerHTML = "Heyyy that's not nice!";
 
     yesBtn.style.transform = `scale(${1 + noClicks * 0.2})`;
 
-    if (noClicks >= 5) {
+    if (noClicks === 5) {
         puppy.innerHTML = "🐶😤";
-        message.innerHTML = "Enough drama. Press YES ❤️";
+        message.innerHTML = "Sharadaaaaaaaa 😤 stop messing around and choose YES already!!! ❤️";
         noBtn.style.display = "none";
     }
 });
@@ -198,4 +199,5 @@ function getColor() {
 
 </body>
 </html>
+
 
