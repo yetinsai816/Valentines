@@ -147,10 +147,20 @@ function moveNo() {
 }
 
 noBtn.addEventListener("mouseenter", () => {
+
+    noClicks++;
+
     if (noClicks < 5) {
         moveNo();
         puppy.innerHTML = "🐶😏";
         message.innerHTML = "Catch me if you can 😜";
+        yesBtn.style.transform = `scale(${1 + noClicks * 0.2})`;
+    }
+
+    if (noClicks === 5) {
+        puppy.innerHTML = "🐶😤";
+        message.innerHTML = "Sharadaaaaaaaa 😤 stop messing around and choose YES already!!! ❤️";
+        noBtn.style.display = "none";
     }
 });
 
@@ -204,3 +214,4 @@ function getColor() {
 
 </body>
 </html>
+
