@@ -48,7 +48,7 @@ h1 {
 /* Speech bubble */
 #message {
     margin-top: 10px;
-    font-size: 26px;
+    font-size: 24px;
     background: white;
     padding: 10px 20px;
     border-radius: 20px;
@@ -59,13 +59,16 @@ h1 {
 
 /* Buttons container */
 #buttons {
-    margin-top: 25px;
+    margin-top: 30px;
     position: relative;
+    width: 320px;
+    height: 80px;
 }
 
+/* Buttons */
 button {
     padding: 15px 30px;
-    font-size: 22px;
+    font-size: 20px;
     border-radius: 40px;
     border: none;
     cursor: pointer;
@@ -75,15 +78,15 @@ button {
 #yesBtn {
     background: #ff4d6d;
     color: white;
-    margin-right: 20px;
+    position: absolute;
+    left: 0;
 }
 
 #noBtn {
     background: #555;
     color: white;
     position: absolute;
-    left: 160px;   /* starting position */
-    top: 0px;
+    right: 0;
 }
 
 /* Confetti */
@@ -120,10 +123,11 @@ const puppy = document.getElementById("puppy");
 const message = document.getElementById("message");
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
+const buttons = document.getElementById("buttons");
 
 let noClicks = 0;
 
-/* Floating hearts generator */
+/* Floating hearts */
 setInterval(() => {
     const heart = document.createElement("div");
     heart.className = "heart";
@@ -135,10 +139,14 @@ setInterval(() => {
     setTimeout(() => heart.remove(), 6000);
 }, 500);
 
-/* Move NO button randomly */
+/* Move NO button inside container */
 function moveNo() {
-    const x = Math.random() * (window.innerWidth - 120);
-    const y = Math.random() * (window.innerHeight - 60);
+    const maxX = buttons.clientWidth - noBtn.offsetWidth;
+    const maxY = buttons.clientHeight - noBtn.offsetHeight;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
 }
@@ -147,7 +155,7 @@ noBtn.addEventListener("mouseover", () => {
     if (noClicks < 5) {
         moveNo();
         puppy.innerHTML = "🐶😏";
-        message.innerHTML = "Stop chasing that button Sharada!";
+        message.innerHTML = "Catch me if you can 😜";
     }
 });
 
@@ -168,7 +176,7 @@ noBtn.addEventListener("click", () => {
 
 yesBtn.addEventListener("click", () => {
     puppy.innerHTML = "🐶💖";
-    message.innerHTML = "YAYYYYY!!! SHE SAID YES 😭❤️";
+    message.innerHTML = "SHE SAID YES 😭❤️";
 
     yesBtn.style.display = "none";
     noBtn.style.display = "none";
@@ -201,6 +209,4 @@ function getColor() {
 
 </body>
 </html>
-
-
 
