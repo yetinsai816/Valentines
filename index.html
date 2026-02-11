@@ -3,106 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <title>Sharada 💖</title>
+
 <style>
 body {
   margin:0;
   overflow:hidden;
-  font-family: Comic Sans MS, cursive;
+  font-family: 'Comic Sans MS', cursive;
   text-align:center;
-  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+  background: radial-gradient(circle at top, #ff758c, #ff7eb3, #ffb199);
   color:white;
 }
 
-h1 { margin-top:80px; } 
-
-button {
-  padding:15px 30px;
-  font-size:22px;
-  border:none;
-  border-radius:30px;
-  cursor:pointer;
-  position:absolute;
+h1 {
+  margin-top:60px;
+  font-size:42px;
+  text-shadow: 2px 2px 15px rgba(0,0,0,0.4);
 }
 
-#yes { background:#ff4d6d; left:40%; top:250px; }
-#no { background:#6c757d; left:55%; top:250px; }
+button {
+  padding:15px 35px;
+  font-size:22px;
+  border:none;
+  border-radius:40px;
+  cursor:pointer;
+  position:absolute;
+  transition:0.2s ease;
+}
+
+#yes {
+  background:#ff2e63;
+  left:40%;
+  top:300px;
+}
+
+#no {
+  background:#444;
+  left:55%;
+  top:300px;
+}
 
 #puppy {
-  font-size:120px;
+  font-size:200px;
   position:absolute;
   bottom:0;
   left:50%;
   transform:translateX(-50%);
-  animation: float 2s infinite;
+  animation: bounce 2s infinite;
+  transition:0.3s;
 }
 
-@keyframes float {
+@keyframes bounce {
   0%{transform:translate(-50%,0);}
-  50%{transform:translate(-50%,-20px);}
+  50%{transform:translate(-50%,-25px);}
   100%{transform:translate(-50%,0);}
 }
 
 .heart {
   position:absolute;
-  animation: rise 5s linear infinite;
+  animation: rise 6s linear infinite;
 }
 
 @keyframes rise {
   0%{transform:translateY(100vh);opacity:1;}
   100%{transform:translateY(-10vh);opacity:0;}
 }
-</style>
-</head>
 
-<body>
-
-<h1>Sharada 💖<br>Will You Be My Valentine? 🐶</h1>
-
-<button id="yes">Yes 💕</button>
-<button id="no">No 🙈</button>
-
-<div id="puppy">🐶</div>
-
-<script>
-let noCount=0;
-let no=document.getElementById("no");
-let yes=document.getElementById("yes");
-let puppy=document.getElementById("puppy");
-
-function move(){
-  no.style.left=Math.random()*80+"%";
-  no.style.top=Math.random()*80+"%";
-}
-
-no.addEventListener("mouseover",move);
-
-no.addEventListener("click",function(){
-  noCount++;
-  puppy.innerHTML="🥺";
-  yes.style.fontSize=(22+noCount*5)+"px";
-  if(noCount>=5){
-    no.style.display="none";
-    puppy.innerHTML="😤🐶";
-  }
-});
-
-yes.addEventListener("click",function(){
-  puppy.innerHTML="😍🐶";
-  document.body.innerHTML="<h1>YAY SHARADA!!! 💖<br><br>You made me the happiest ever! 🥰<br><br>From Yetin ❤️</h1>";
-});
-
-function heart(){
-  let h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="💖";
-  h.style.left=Math.random()*100+"vw";
-  h.style.fontSize=(Math.random()*20+15)+"px";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),5000);
-}
-setInterval(heart,400);
-</script>
-
-</body>
-</html>
-
+.confetti {
